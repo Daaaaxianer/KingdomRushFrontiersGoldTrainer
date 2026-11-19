@@ -29,7 +29,7 @@ def main():
     bridge_hash=hashlib.sha256(bridge.read_bytes()).hexdigest()
     info={'GameHash':compatibility['game_sha256'],'LuaHash':compatibility['lua51_sha256'],'BridgeHash':bridge_hash}
     (work/'BuildInfo.cs').write_text('internal static class BuildInfo {\n'+''.join(' internal const string '+k+'="'+v+'";\n' for k,v in info.items())+'}\n')
-    (work/'Version.cs').write_text('[assembly:System.Reflection.AssemblyVersion("0.10.0.0")]\n[assembly:System.Reflection.AssemblyFileVersion("0.10.0.0")]\n[assembly:System.Reflection.AssemblyProduct("KingdomRushFrontiersGoldTrainer")]\n')
+    (work/'Version.cs').write_text('[assembly:System.Reflection.AssemblyVersion("0.1.0.0")]\n[assembly:System.Reflection.AssemblyFileVersion("0.1.0.0")]\n[assembly:System.Reflection.AssemblyProduct("KingdomRushFrontiersGoldTrainer")]\n')
     common=[csc,'/nologo','/platform:x64','/optimize+','/reference:System.Windows.Forms.dll','/reference:System.Drawing.dll','/reference:Accessibility.dll',
             '/resource:'+str(bridge)+',KRFLocalGoldBridge','/resource:'+str(ROOT/'assets/app.ico')+',AppIcon','/win32icon:'+str(ROOT/'assets/app.ico'),'/win32manifest:'+str(ROOT/'assets/app.manifest')]
     sources=sorted((ROOT/'src/ui').glob('*.cs'))+[work/'BuildInfo.cs',work/'Version.cs']
