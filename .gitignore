@@ -1,0 +1,10 @@
+/build/
+/dist/
+*.exe
+*.dll
+*.pdb
+__pycache__/
+*.pyc
+.vs/
+存档备份/
+*.log
